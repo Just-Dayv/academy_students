@@ -29,4 +29,8 @@ public class DepartmentEntity {
     }
 
 
+    public DepartmentEntity(int id, String name, FacultyEntity facultyEntity) {
+        this(name,facultyEntity);
+        this.id = id;
+    }
 }

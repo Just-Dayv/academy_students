@@ -1,7 +1,9 @@
 package com.cwgplc.studentregistration.service;
 
 import com.cwgplc.studentregistration.dto.DepartmentRequest;
+import com.cwgplc.studentregistration.dto.FacultyRequest;
 import com.cwgplc.studentregistration.entity.DepartmentEntity;
+import com.cwgplc.studentregistration.entity.FacultyEntity;
 import com.cwgplc.studentregistration.exception.InvalidRequestException;
 import com.cwgplc.studentregistration.repository.DepartmentRepository;
 import com.cwgplc.studentregistration.repository.FacultyRepository;
@@ -24,14 +26,25 @@ public class DepartmentService {
        }
        else
            throw new InvalidRequestException("No Faculty Exists For Specified ID");
+    }
 
+    public DepartmentEntity updateDepartment (DepartmentRequest departmentRequest ) {
+
+       if (departmentRepository.existsById(departmentRequest.getId()))
+        {
+            if (facultyRepository.existsById(departmentRequest.getFacultyID())) {
+                return departmentRepository.save(new DepartmentEntity(departmentRequest.getId(),departmentRequest.getName(),facultyRepository.findById(departmentRequest.getFacultyID()).get()));
+            } else
+                throw new InvalidRequestException("No Faculty Exists For Specified ID");
+        }
+       else throw new InvalidRequestException("No Department Exists For Specified ID");
     }
 
    public DepartmentEntity getDepartmentById(int id){
        if(facultyRepository.existsById(id)){
            return departmentRepository.findById(id).get();       }
        else
-           throw new InvalidRequestException("No Faculty Exists For Specified ID");
+           throw new InvalidRequestException("No Department Exists For Specified ID");
 
     }
 

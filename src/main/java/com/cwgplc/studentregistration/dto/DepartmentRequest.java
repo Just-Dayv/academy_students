@@ -17,7 +17,7 @@ public class DepartmentRequest {
     @NotEmpty(groups = {CreateEntityRequest.class,UpdateEntityRequest.class},message = "Name Cannot Be Empty")
     private String name;
 
-    @Min(value = 1, groups = { UpdateEntityRequest.class, CreateEntityRequest.class}, message = "ID must have a value of at least 1")
+    @Min(value = 1, groups = { UpdateEntityRequest.class, CreateEntityRequest.class}, message = " Faculty_ID must have a value of at least 1")
     private int facultyID;
 
     public String getName() {
