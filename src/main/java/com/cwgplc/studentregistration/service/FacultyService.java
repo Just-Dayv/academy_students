@@ -16,26 +16,16 @@ public class FacultyService {
     private FacultyRepository facultyRepository;
 
     public FacultyEntity createFaculty(FacultyRequest facultyRequest) {
-        //System.out.println("Checking create faculty: "+ facultyRequest.toFacultyEntity().toString());
 
         return facultyRepository.save(facultyRequest.toFacultyEntity());
-      //  System.out.println("Confirming create faculty maintains id: "+ facultyRequest.toFacultyEntity().toString());
-
-
     }
 
     public FacultyEntity updateFaculty(FacultyRequest facultyRequest) {
-       // System.out.println("Checking create faculty: "+ facultyRequest.toFacultyEntity().toString());
         if(facultyRepository.existsById(facultyRequest.getId())){
             return facultyRepository.save(facultyRequest.toFacultyEntity());
         }
         else
             throw new InvalidRequestException("No Faculty Exists For Specified ID");
-
-        //FacultyEntity facultyEntity = facultyRepository.save(facultyRequest.toFacultyEntity());
-       // System.out.println("Confirming create faculty maintains id: "+ facultyRequest.toFacultyEntity().toString());
-
-       // return facultyRequest;
     }
 
     public FacultyEntity getFacultyById(int id){
@@ -47,7 +37,7 @@ public class FacultyService {
 
     }
 
-    public Iterable<FacultyEntity> getAllFalculties() {
+    public Iterable<FacultyEntity> getAllFaculties() {
         return facultyRepository.findAll();
     }
 }

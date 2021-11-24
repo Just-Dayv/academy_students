@@ -15,26 +15,26 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/department")
+    @PostMapping("/admin/department")
     ResponseEntity<Response> createDepartment (@RequestBody @Validated(CreateEntityRequest.class ) DepartmentRequest departmentRequest) {
       DepartmentEntity departmentEntity = departmentService.createDepartment(departmentRequest);
         return ResponseEntity.ok(new DepartmentResponse("201","Created", departmentEntity));
     }
 
-    @PutMapping("/department")
+    @PutMapping("/admin/department")
     ResponseEntity<Response> updateDepartment(@RequestBody @Validated(UpdateEntityRequest.class) DepartmentRequest departmentRequest  ) {
 
        DepartmentEntity departmentEntity = departmentService.updateDepartment(departmentRequest);
         return  ResponseEntity.ok(new DepartmentResponse("200","Updated",departmentEntity));
     }
 
-    @GetMapping("/department/{id}")
+    @GetMapping("/admin/department/{id}")
     ResponseEntity<DepartmentEntity> getDepartment(@PathVariable int id) {
         DepartmentEntity departmentEntity = departmentService.getDepartmentById(id);
         return ResponseEntity.ok(departmentEntity);
     }
 
-    @GetMapping("/department")
+    @GetMapping("/admin/department")
     ResponseEntity<Iterable<DepartmentEntity>> getAll() {
         Iterable<DepartmentEntity> departments = departmentService.getAllDepartments();
         return ResponseEntity.ok(departments);

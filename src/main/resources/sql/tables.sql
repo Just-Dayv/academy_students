@@ -1,4 +1,4 @@
-CREATE TABLE `facultyEntity` (
+CREATE TABLE `faculty` (
     `id` int NOT NULL AUTO_INCREMENT,
     `name` varchar(20) NOT NULL,
     PRIMARY KEY (`id`)

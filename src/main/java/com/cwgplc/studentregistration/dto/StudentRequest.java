@@ -15,28 +15,27 @@ public class StudentRequest {
     @Size(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Name must be between 5 and 15 Characters", min = 5, max = 15)
     @NotNull(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Name cannot be null")
     @NotEmpty(groups = {CreateEntityRequest.class,UpdateEntityRequest.class},message = "Name Cannot Be Empty")
-    private String name;
+    private String firstName;
 
     @Size(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Name must be between 5 and 15 Characters", min = 5, max = 15)
     @NotNull(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Name cannot be null")
     @NotEmpty(groups = {CreateEntityRequest.class,UpdateEntityRequest.class},message = "Name Cannot Be Empty")
     private String lastName;
 
-    @Size(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Name must be between 5 and 15 Characters", min = 1, max = 1)
-    @NotNull(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Name cannot be null")
-    @NotEmpty(groups = {CreateEntityRequest.class,UpdateEntityRequest.class},message = "Name Cannot Be Empty")
+    @Size(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Specify M for Male OR  F for Female ", min = 1, max = 1)
+    @NotNull(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "gender cannot be null")
+    @NotEmpty(groups = {CreateEntityRequest.class,UpdateEntityRequest.class},message = "gender Cannot Be Empty")
     private String gender;
 
-    @NotNull(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Name cannot be null")
-    @NotEmpty(groups = {CreateEntityRequest.class,UpdateEntityRequest.class},message = "Name Cannot Be Empty")
+    @NotNull(groups = {CreateEntityRequest.class,UpdateEntityRequest.class}, message = "Date of Birth cannot be null")
     @Past(message = "Please specify a valid birthdate")
     private LocalDate dob;
 
     @Min(value = 1, groups = { UpdateEntityRequest.class, CreateEntityRequest.class}, message = " Department_ID must have a value of at least 1")
     private int departmentID;
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
     public int getId() {
@@ -45,5 +44,17 @@ public class StudentRequest {
 
     public int getDepartmentID(){
         return departmentID;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public LocalDate getDob() {
+        return dob;
     }
 }
